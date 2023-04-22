@@ -1,20 +1,20 @@
+//script:  home screen
+//author:  Steven Motz
+//date:    4/22/2023
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import home from './componets/home';
-import styles from './styles';
 
+import styles from '../styles';
 
-export default function App() {
+const home = () => {
   return (
-    <NavigationContainer>{
-      <Stack.Navigator>
-      <Stack.Screen name="Home" component={home} />
-    </Stack.Navigator>
-    }</NavigationContainer>
-  );
+    <View>
+      <Text>home</Text>
+    </View>
+  )
 }
 
-const Stack = createNativeStackNavigator(); 
+export default home
