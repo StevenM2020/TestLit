@@ -8,9 +8,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#005ab3',
-      alignItems: 'center',
-      justifyContent: 'center',
+      backgroundColor: '#001442',
+      //alignItems: 'center',
+      //justifyContent: 'center',
     },
     buttonContainer: {
       marginTop: 20,
@@ -24,30 +24,39 @@ export default styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: "bold"
     },
-    square: {
-      width: 100,
-      height: 100,
+    card: {
+        backgroundColor: '#002885',
+        margin: 10,
+        padding: 10,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: {width: 1, height: 1},
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 5,
+        flex: 1,
     },
-    board:{
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 2,
-      marginTop: 20,
+    cardText: {
+        color: '#fff',
+        fontSize: 20,
     },
-    gameText: {
-      fontSize: 20,
+    headerButtonLayout: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
-    gameTop: {
-      flex: 1,
+    headerButton: {
+        backgroundColor: '#002885',
+        margin: 10,
+        padding: 10,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: {width: 1, height: 1},
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 5,
+        flex: 1,
     },
-    gameTitle: {
-      fontSize: 40,
-      fontWeight: "bold",
-    },
-    gameButtonContainer: {
-      marginTop: 10,
-      flex: 1,
-      width: 200,
-    },
+
 
   });
