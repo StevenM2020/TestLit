@@ -1,15 +1,15 @@
 //script:  home screen
-//author:  Steven Motz
+//author:  Steven Motz and Ethan Lehutsky
 //date:    4/22/2023
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../styles';
 
-const home = ({ navigation }) => {
+const Home = ({ navigation }) => {
     const [listOfSets, setListOfSets] = useState([
         {key : '1', name: 'Addition', numCards: '27'},
         {key : '2', name: 'Subtraction', numCards: '6'},
@@ -25,6 +25,37 @@ const home = ({ navigation }) => {
         {key : '12', name: 'Cubes', numCards: '1'},
         {key : '13', name: 'Square Roots2', numCards: '1'},
     ]);
+    const [Sets, setSets] = useState([]);
+
+    _storeData = async () => {
+      try {
+        await AsyncStorage.setItem(
+          '@MySuperStore:key',
+          JSON.stringify(listOfSets),
+        );
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+    _retrieveData = async () => {
+      try {
+        const testArray = await AsyncStorage.getItem('@MySuperStore:key');
+        if (testArray !== null) {
+          // We have data!!
+          setSets(JSON.parse(testArray));
+        }
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+
+    useEffect(() => {
+      _storeData();
+      _retrieveData();
+    }, []); 
+
   return (
     <View style={styles.container}>
       <Text>home</Text>
@@ -33,7 +64,7 @@ const home = ({ navigation }) => {
       </View>
       <View>{
       <FlatList
-      data={listOfSets}
+       data={Sets}
       renderItem={({item}) => (
       <TouchableOpacity onPress={() => navigation.navigate('Cards')}>
         <View style={styles.card}>
@@ -61,4 +92,4 @@ const home = ({ navigation }) => {
   )
 }
 
-export default home
+export default Home
