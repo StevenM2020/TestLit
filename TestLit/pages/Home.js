@@ -11,10 +11,10 @@ import styles from '../styles';
 
 const Home = ({ navigation }) => {
     const [listOfSets, setListOfSets] = useState([
-        {key : '1', name: 'Addition', numCards: '27', question: 'What is 1+1?', answer: '2'},
-        {key : '2', name: 'Subtraction', numCards: '6', question: 'What is 2+2?', answer: '4'},
-        {key : '3', name: 'Multiplication', numCards: '4', question: 'What is 3+3?', answer: '6'},
-        {key : '4', name: 'Division', numCards: '2', question: 'What is 4+4?', answer: '8'},
+        {key : '1', name: 'Addition', numCards: '27', question:['test ',' test2'], answer: ['test ',' test2']},
+        {key : '2', name: 'Subtraction', numCards: '6', question: ['What is 2+2?'], answer: ['4']},
+        {key : '3', name: 'Multiplication', numCards: '4', question: ['What is 3+3?'], answer: ['6']},
+        {key : '4', name: 'Division', numCards: '2', question: ['What is 4+4?'], answer: ['8']},
         {key : '5', name: 'Fractions', numCards: '7', },
         {key : '6', name: 'Decimals', numCards: '3'},
         {key : '7', name: 'Percents', numCards: '1'},

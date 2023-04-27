@@ -1,5 +1,5 @@
 //script:  ViewCards screen
-//author:  Steven Motz
+//author:  Steven Motz and Ethan Lehutsky
 //date:    4/22/2023
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
