@@ -19,9 +19,10 @@ const FlashCard = ({ navigation }) => {
         {question: 'What is 6+6?', answer: '12'},
     ]);
     const [currentCard, setCurrentCard] = useState(0);
-    const [isQuestion, setIsQuestion] = useState(false);
+    const [isQuestion, setIsQuestion] = useState(true);
     const [cardValue, setCardValue] = useState(Cards[0].question);
     
+
 useEffect(() => {
   if(currentCard >= Cards.length){
     setCurrentCard(0);
