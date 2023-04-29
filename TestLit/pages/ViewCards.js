@@ -48,11 +48,12 @@ const ViewCards = ({ navigation }) => {
       </View>
         
       <View style={styles.card}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Test')}>
         <Text style={styles.cardText}>Test</Text>
-      </View>
+        </TouchableOpacity>
       </View>
 
-
+      </View>
 
 
 

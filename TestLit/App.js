@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './pages/Home';
 import ViewCards from './pages/ViewCards';
 import FlashCard from './pages/FlashCard';
+import Test from './pages/Test';
 import styles from './styles';
 
 
@@ -16,6 +17,7 @@ export default function App() {
       <Stack.Screen name="Sets" component={Home} />
       <Stack.Screen name="Cards" component={ViewCards} />
       <Stack.Screen name="FlashCard" component={FlashCard} />
+      <Stack.Screen name="Test" component={Test} />
     </Stack.Navigator>
     }</NavigationContainer>
   );
