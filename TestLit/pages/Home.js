@@ -58,10 +58,20 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>home</Text>
-      <View style={styles.card}>
-        <Text style={styles.cardText}>Create Set</Text>
+     
+     
+
+
+     <View style={styles.headerButtonLayout}>
+    <View style={styles.card}>
+      <TouchableOpacity style={styles.button} >
+        <Text style={styles.cardText}>Create New Card</Text>
+        </TouchableOpacity>
       </View>
+            </View>
+
+
+            
       <View>{
       <FlatList
        data={Sets}

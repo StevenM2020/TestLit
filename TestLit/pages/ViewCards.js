@@ -34,9 +34,18 @@ const ViewCards = ({ navigation }) => {
       _retrieveData();
     }, []); 
 
+
+
+    function deleteSet(){
+      //delete set from storage
+      alert('Set Deleted');
+      navigation.navigate('Sets');
+    }
+
+
+
   return (
     <View style={styles.container}>
-      <Text>ViewCards</Text>
 
      
       <View style={styles.headerButtonLayout}>
@@ -55,7 +64,21 @@ const ViewCards = ({ navigation }) => {
 
       </View>
 
+      <View style={styles.headerButtonLayout}>
+      
+      <View style={styles.card}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Edit')}>
+        <Text style={styles.cardText}>Edit</Text>
+        </TouchableOpacity>
+      </View>
+        
+      <View style={styles.deleteHeaderButton}>
+      <TouchableOpacity style={styles.button} onPress={() => deleteSet()}>
+        <Text style={styles.cardText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
 
+      </View>
 
 
       <View>{

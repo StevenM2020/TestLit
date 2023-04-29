@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import ViewCards from './pages/ViewCards';
 import FlashCard from './pages/FlashCard';
 import Test from './pages/Test';
+import Edit from './pages/Edit';
 import styles from './styles';
 
 
@@ -18,6 +19,7 @@ export default function App() {
       <Stack.Screen name="Cards" component={ViewCards} />
       <Stack.Screen name="FlashCard" component={FlashCard} />
       <Stack.Screen name="Test" component={Test} />
+      <Stack.Screen name="Edit" component={Edit} />
     </Stack.Navigator>
     }</NavigationContainer>
   );
