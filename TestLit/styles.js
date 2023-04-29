@@ -57,6 +57,15 @@ export default styles = StyleSheet.create({
         elevation: 5,
         flex: 1,
     },
+    flashButtonContainer: {
+        marginTop: 20,
+        marginBottom: 50,
+        marginLeft: 20,
+        marginRight: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
 
 
   });

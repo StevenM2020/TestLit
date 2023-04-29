@@ -61,4 +61,4 @@ const home = ({ navigation }) => {
   )
 }
 
-export default home
+export default home;

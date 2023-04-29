@@ -1,4 +1,4 @@
-//script:  FlashCard screen
+//script:  Test Screen
 //author:  Steven Motz
 //date:    4/22/2023
 import { StatusBar } from 'expo-status-bar';
@@ -9,7 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import styles from '../styles';
 
-const FlashCard = ({ navigation }) => {
+const Test = ({ navigation }) => {
     const [Cards, setCards] = useState([
         {question: 'What is 1+1?', answer: '2'},
         {question: 'What is 2+2?', answer: '4'},
@@ -21,7 +21,7 @@ const FlashCard = ({ navigation }) => {
     const [currentCard, setCurrentCard] = useState(0);
     const [isQuestion, setIsQuestion] = useState(false);
     const [cardValue, setCardValue] = useState(Cards[0].question);
-    
+
 useEffect(() => {
   if(currentCard >= Cards.length){
     setCurrentCard(0);
@@ -45,7 +45,7 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
-      <Text>FlashCard</Text>
+      <Text>Test</Text>
 
         <View style={styles.card}>
         <Text style={styles.cardText}>{isQuestion?"Q":"A"}: {cardValue}</Text>
@@ -61,4 +61,4 @@ useEffect(() => {
   )
 }
 
-export default FlashCard
+export default Test
