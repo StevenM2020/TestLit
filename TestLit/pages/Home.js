@@ -64,7 +64,7 @@ const Home = ({ navigation }) => {
 
      <View style={styles.headerButtonLayout}>
     <View style={styles.card}>
-      <TouchableOpacity style={styles.button} >
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Create')}>
         <Text style={styles.cardText}>Create New Card</Text>
         </TouchableOpacity>
       </View>

@@ -1,16 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+//script:  Global Styles Sheet
+//author:  Steven Motz
+//date:    4/20/2023
+import { StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#001442',
-      //alignItems: 'center',
-      //justifyContent: 'center',
     },
     buttonContainer: {
       marginTop: 20,

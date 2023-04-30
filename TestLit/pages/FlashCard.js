@@ -1,6 +1,6 @@
 //script:  FlashCard screen
 //author:  Steven Motz
-//date:    4/22/2023
+//date:    4/28/2023
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
@@ -22,7 +22,7 @@ const FlashCard = ({ navigation }) => {
     const [isQuestion, setIsQuestion] = useState(true);
     const [cardValue, setCardValue] = useState(Cards[0].question);
     
-
+// changes the current card after the user clicks the next or previous button
 useEffect(() => {
   if(currentCard >= Cards.length){
     setCurrentCard(0);
@@ -36,6 +36,7 @@ useEffect(() => {
   
 }, [currentCard]);
 
+// changes the card value to the question or answer (flip card)
 useEffect(() => {
   if(isQuestion){
     setCardValue(Cards[currentCard].question);

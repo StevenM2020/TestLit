@@ -1,6 +1,6 @@
 //script:  Test Screen
 //author:  Steven Motz
-//date:    4/22/2023
+//date:    4/29/2023
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import {
@@ -33,31 +33,14 @@ const Test = ({ navigation }) => {
   const [cardValue, setCardValue] = useState(Cards[0].question);
   const [userAnswer, setUserAnswer] = useState(["", "", "", "", "", ""]);
 
-  useEffect(() => {
-    if (currentCard >= Cards.length) {
-      setCurrentCard(0);
-      setCardValue(Cards[0].question);
-    } else if (currentCard < 0) {
-      setCurrentCard(Cards.length - 1);
-      setCardValue(Cards[Cards.length - 1].question);
-    } else {
-      setCardValue(Cards[currentCard].question);
-    }
-  }, [currentCard]);
-
-  useEffect(() => {
-    if (isQuestion) {
-      setCardValue(Cards[currentCard].question);
-    } else {
-      setCardValue(Cards[currentCard].answer);
-    }
-  }, [isQuestion]);
-
+  // updates the userAnswer array with the user's answer
   function updateAnswers(index, val) {
     userAnswer[index] = val;
     setUserAnswer(userAnswer);
     console.log(userAnswer);
   }
+
+  // checks the user's answers against the correct answers and displays the results
   function checkAnswers() {
     var correct = 0;
     for (var i = 0; i < Cards.length; i++) {
@@ -67,6 +50,8 @@ const Test = ({ navigation }) => {
     }
     alert("You got " + correct + " out of " + Cards.length + " correct!");
   }
+
+  
   return (
     <View style={styles.container}>
       <View>
