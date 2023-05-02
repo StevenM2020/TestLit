@@ -2,47 +2,34 @@
 //author:  Steven Motz and Ethan Lehutsky
 //date:    4/22/2023
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Button, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from '../styles';
+import { AppContext } from '../AppContext';
 
-const ViewCards = ({ navigation }) => {
-    const [Cards, setCards] = useState([
-    //     {key : '1', question: 'What is 1+1?', answer: '2'},
-    //     {key : '2', question: 'What is 2+2?', answer: '4'},
-    //     {key : '3', question: 'What is 3+3?', answer: '6'},
-    //     {key : '4', question: 'What is 4+4?', answer: '8'},
-    //     {key : '5', question: 'What is 5+5?', answer: '10'},
-    //     {key : '6', question: 'What is 6+6?', answer: '12'},
-    ]);
-    _retrieveData = async () => {
-      try {
-        const testArray = await AsyncStorage.getItem('@MySuperStore:key');
-        if (testArray !== null) {
-          // We have data!!
-          setCards(JSON.parse(testArray));
-        }
-      } catch (error) {
-        alert(error);
-      }
-    };
-    useEffect(() => {
-      _retrieveData();
-    }, []); 
-
+const ViewCards = ({ navigation, route }) => {
+  const { index } = route.params;
+  const {_deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
+    const [Cards, setCards] = useState(listOfSets[index].cardList);
+   
 
 
     function deleteSet(){
+     
+      _deleteData(index);
       //delete set from storage
       alert('Set Deleted');
       navigation.navigate('Sets');
     }
 
 
+    useEffect(() => {
+      _retrieveData();
+    }, []); 
 
   return (
     <View style={styles.container}>
@@ -51,13 +38,13 @@ const ViewCards = ({ navigation }) => {
       <View style={styles.headerButtonLayout}>
       
       <View style={styles.card}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FlashCard')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FlashCard', { index })}>
         <Text style={styles.cardText}>Flash Cards</Text>
         </TouchableOpacity>
       </View>
         
       <View style={styles.card}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Test')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Test', { index })}>
         <Text style={styles.cardText}>Test</Text>
         </TouchableOpacity>
       </View>
@@ -67,7 +54,7 @@ const ViewCards = ({ navigation }) => {
       <View style={styles.headerButtonLayout}>
       
       <View style={styles.card}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Edit')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Edit', { index })}>
         <Text style={styles.cardText}>Edit</Text>
         </TouchableOpacity>
       </View>

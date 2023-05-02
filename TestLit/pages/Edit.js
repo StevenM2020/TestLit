@@ -2,7 +2,7 @@
 //author:  Steven Motz
 //date:    4/29/2023
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,28 +18,27 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import styles from "../styles";
+import { AppContext } from "../AppContext";
 
-const Test = ({ navigation }) => {
-  const [Cards, setCards] = useState([
-    { question: "What is 1+1?", answer: "2" },
-    { question: "What is 2+2?", answer: "4" },
-    { question: "What is 3+3?", answer: "6" },
-    { question: "What is 4+4?", answer: "8" },
-    { question: "What is 5+5?", answer: "10" },
-    { question: "What is 6+6?", answer: "12" },
-  ]);
+const Test = ({ navigation, route  }) => {
+  const { index } = route.params;
+  const {_updateData, _deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
+
+    const [Cards, setCards] = useState(listOfSets[index]?.cardList);
 
   // updates the answer at the given index
   function updateAnswers(index, val) {
-    Cards[index].answer = val;
-    setCards(Cards);
-    console.log(Cards[index].answer);
+    let tempCards = Cards
+    tempCards[index].answer = val
+    setCards(tempCards);
+    console.log(tempCards[index].answer);
   }
 
   // updates the question at the given index
   function updateQuestions(index, val) {
-    Cards[index].question = val;
-    setCards(Cards);
+    let tempCards = Cards
+    tempCards[index].question = val
+    setCards(tempCards);
     console.log(Cards[index].question);
   }
 
@@ -51,7 +50,20 @@ const Test = ({ navigation }) => {
 
     // adds a new card to the end of the list
   function addCard() {
-    setCards([...Cards, { question: "New Question", answer: "New Answer" }]);
+    setCards(prevCards => [...prevCards, { question: "New Question", answer: "New Answer" }]);
+  }
+
+  function updateSet() {
+    
+    _updateData(index, {
+      name: listOfSets[index]?.name,
+      numCards: Cards.length,
+      cardList: Cards
+    });
+    // save the set to the database
+    //alert("Set Updated!");
+    navigation.navigate("Sets", { index });
+    setCards([]);
   }
 
   return (
@@ -96,6 +108,13 @@ const Test = ({ navigation }) => {
           <View style={styles.card}>
             <TouchableOpacity style={styles.button} onPress={() => addCard()}>
               <Text style={styles.cardText}>Create New Card</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.headerButtonLayout}>
+          <View style={styles.card}>
+            <TouchableOpacity style={styles.button} onPress={() => updateSet()}>
+              <Text style={styles.cardText}>Done</Text>
             </TouchableOpacity>
           </View>
         </View>
