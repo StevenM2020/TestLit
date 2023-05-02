@@ -37,21 +37,25 @@ export default function App() {
 
   
    // Add Data to Array newDeck and calls _retrieveData()
-  _addData = async (newDeck) => {
+   _addData = async (newDeck) => {
     try {
 
       const array = JSON.parse(await AsyncStorage.getItem('cardDeckz'))
-      array.push(newDeck)
-
+      let newArray = [];
+      if (array == null){
+        newArray = [newDeck];
+      }
+      else{
+        newArray = [...array, newDeck];
+      }
       await AsyncStorage.setItem(
         'cardDeckz',
-       JSON.stringify(array),
+       JSON.stringify(newArray),
       );
       _retrieveData();
     } catch (error) {
       // Error saving data
-      alert(error);
-
+      alert("added data: " + error);
     }
  
   };
