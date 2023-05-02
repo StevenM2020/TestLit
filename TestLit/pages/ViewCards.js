@@ -12,12 +12,18 @@ import styles from '../styles';
 import { AppContext } from '../AppContext';
 
 const ViewCards = ({ navigation, route }) => {
+
+  //Gets index from Navagation route
   const { index } = route.params;
+
+  //Declare Functions 
   const {_deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
+    //Array where cards are stored
     const [Cards, setCards] = useState(listOfSets[index].cardList);
    
 
 
+    //Removes whole deck from data array
     function deleteSet(){
      
       _deleteData(index);
@@ -26,7 +32,7 @@ const ViewCards = ({ navigation, route }) => {
       navigation.navigate('Sets');
     }
 
-
+    //Refresh Data
     useEffect(() => {
       _retrieveData();
     }, []); 

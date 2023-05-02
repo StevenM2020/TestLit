@@ -1,5 +1,5 @@
 //script:  FlashCard screen
-//author:  Steven Motz
+//author:  Steven Motz and Ethan Lehutsky
 //date:    4/28/2023
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useContext } from 'react';
@@ -11,10 +11,14 @@ import styles from '../styles';
 import { AppContext } from '../AppContext';
 
 const FlashCard = ({ navigation, route }) => {
-  
+
+  //Gets index from Navagation route
   const { index } = route.params;
+  
+  //Declare Functions 
   const {_deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
 
+  //Declares card array
     const [Cards, setCards] = useState(listOfSets[index]?.cardList);
 
    

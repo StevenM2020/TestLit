@@ -1,5 +1,5 @@
 //script:  Create Screen
-//author:  Steven Motz
+//author:  Steven Motz and Ethan Lehutsky
 //date:    4/29/2023
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useContext } from "react";
@@ -22,11 +22,16 @@ import styles from "../styles";
 import { AppContext } from "../AppContext";
 
 const Create = ({ navigation }) => {
+
+  //Importing App.js functions
   const {_addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
 
+  //Array that the cards will be saved on
   const [Cards, setCards] = useState([
     
   ]);
+
+  //Name of Deck
   const [name, setName] = useState("default");
   
 
@@ -58,6 +63,7 @@ const Create = ({ navigation }) => {
   // saves the set to the database and returns to the home screen
   function createSet() {
     
+    //Add Data format
     _addData({
       name: name,
       numCards: Cards.length,
@@ -68,10 +74,12 @@ const Create = ({ navigation }) => {
     navigation.navigate("Sets");
     setCards([]);
   }
+
+  //Updates the Decks Name
   function updateName(val) {
     setName(val);
   }
-
+//Retrieve Data on refresh
 useEffect(() => {
   _retrieveData();
 }, []); 
@@ -81,7 +89,7 @@ useEffect(() => {
       <ScrollView style={styles.scrollView}>
 
       <View style={styles.card}>
-        <TextInput style={styles.cardText}  onChangeText={(val) => updateName( val)} placeholder={"Name"}>{name}</TextInput>
+        <TextInput style={styles.cardText}  onChangeText={(val) => updateName(val)} placeholder={"Name"}>{name}</TextInput>
       </View>
 
         <View>

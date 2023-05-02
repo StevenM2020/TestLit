@@ -20,6 +20,8 @@ export default function App() {
     
   const [listOfSets, setListOfSets] = useState([]);
 
+
+  //Retrieves data from cardDeckz
   _retrieveData = async () => {
     try {
       const testArray = await AsyncStorage.getItem('cardDeckz');
@@ -34,7 +36,7 @@ export default function App() {
   };
 
   
-
+   // Add Data to Array newDeck and calls _retrieveData()
   _addData = async (newDeck) => {
     try {
 
@@ -54,6 +56,7 @@ export default function App() {
  
   };
 
+  //Deletes data from an index in the Flatlist 
   _deleteData = async (index) => {
     try {
 
@@ -73,6 +76,7 @@ export default function App() {
  
   };
 
+  //Updates data by saving it into the deck, specified by the index
   _updateData = async (index, deck) =>{
     try {
 
@@ -93,7 +97,9 @@ export default function App() {
   };
 
   return (
+    //Set above functions globally 
     <AppContext.Provider value = {{_updateData,_deleteData, _addData, _retrieveData, listOfSets, setListOfSets}}>
+
     <NavigationContainer>{
       <Stack.Navigator>
       <Stack.Screen name="Sets" component={Home} />

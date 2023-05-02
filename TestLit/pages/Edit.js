@@ -1,5 +1,5 @@
 //script:  Edit Screen
-//author:  Steven Motz
+//author:  Steven Motz and Ethan Lehutsky
 //date:    4/29/2023
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useContext } from "react";
@@ -21,9 +21,12 @@ import styles from "../styles";
 import { AppContext } from "../AppContext";
 
 const Test = ({ navigation, route  }) => {
+  //Saves index from route
   const { index } = route.params;
+  //Declare Functions 
   const {_updateData, _deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
 
+    //Card Array
     const [Cards, setCards] = useState(listOfSets[index]?.cardList);
 
   // updates the answer at the given index
@@ -53,6 +56,7 @@ const Test = ({ navigation, route  }) => {
     setCards(prevCards => [...prevCards, { question: "New Question", answer: "New Answer" }]);
   }
 
+  //Updates the Deck of cards
   function updateSet() {
     
     _updateData(index, {

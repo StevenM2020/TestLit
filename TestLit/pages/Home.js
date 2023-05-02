@@ -17,7 +17,7 @@ const Home = ({ navigation }) => {
 const {_retrieveData, listOfSets} = useContext(AppContext);
 
 
-
+    //Calls _retrieveData();
     useEffect(() => {
       _retrieveData();
     }, []); 
@@ -27,7 +27,7 @@ const {_retrieveData, listOfSets} = useContext(AppContext);
      
      
 
-
+    
      <View style={styles.headerButtonLayout}>
     <View style={styles.card}>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Create')}>
@@ -39,6 +39,7 @@ const {_retrieveData, listOfSets} = useContext(AppContext);
 
             
       <View>{
+  
       <FlatList
        data={listOfSets}
       renderItem={({item, index}) => (
