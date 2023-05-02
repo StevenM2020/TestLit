@@ -19,7 +19,7 @@ const ViewCards = ({ navigation, route }) => {
   //Declare Functions 
   const {_deleteData, _addData,_retrieveData, listOfSets,setListOfSets} = useContext(AppContext);
     //Array where cards are stored
-    const [Cards, setCards] = useState(listOfSets[index].cardList);
+    const [Cards, setCards] = useState(listOfSets[index]?.cardList);
    
 
 
